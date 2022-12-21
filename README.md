@@ -5,6 +5,7 @@ skeleton
 
 ## nodejs setting ##########
 PORT=3001
+JWT_SECRET=2B4D6251655468566D597133743677397A24432646294A404E635266556A586E
 LOGGER_LEVEL=debug
 ## sequelize setting ##########
 DB_HOST=localhost
