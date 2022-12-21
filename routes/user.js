@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
       const err = new Error("Not allowed null (name, userid, password)");
       logger.error(err.toString());
 
-      res.status(500).json({ err: err.toString() });
+      return res.status(500).json({ err: err.toString() });
     }
 
     // 비즈니스 로직 호출
@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
 });
 
 // 리스트 조회
-router.get("/", isLoggedIn, async (req, res) => {
+router.get("/all", isLoggedIn, async (req, res) => {
   try {
     const params = {
       name: req.query.name,
@@ -58,10 +58,10 @@ router.get("/", isLoggedIn, async (req, res) => {
 });
 
 // 상세정보 조회
-router.get("/:id", isLoggedIn, async (req, res) => {
+router.get("/", isLoggedIn, async (req, res) => {
   try {
     const params = {
-      id: req.params.id,
+      id: req.decoded.id,
     };
     logger.info(`(user.info.params) ${JSON.stringify(params)}`);
 
@@ -79,7 +79,6 @@ router.get("/:id", isLoggedIn, async (req, res) => {
 router.put("/", isLoggedIn, async (req, res) => {
   try {
     const params = {
-      // loginid: req.decoded.id, // 권한 확인용 decoded
       id: req.decoded.id,
       name: req.body.name,
       email: req.body.email,
@@ -94,7 +93,7 @@ router.put("/", isLoggedIn, async (req, res) => {
       const err = new Error("Not allowed null (name)");
       logger.error(err.toString());
 
-      res.status(500).json({ err: err.toString() });
+      return res.status(500).json({ err: err.toString() });
     }
 
     const result = await userService.edit(params);
