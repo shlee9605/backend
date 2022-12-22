@@ -6,15 +6,5 @@ COPY . ./
 
 RUN npm install
 
-ENV PORT 3000
-ENV JWT_SECRET jwtsecret
-ENV LOGGER_LEVEL debug
-ENV DB_HOST 192.168.0.106
-ENV DB_PORT 3307
-ENV DB_DATABASE testDB
-ENV DB_ID root
-ENV DB_PASS root
-ENV DB_DIALECT mysql
-
 EXPOSE 3000
 CMD ["npm", "run", "start"]
