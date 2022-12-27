@@ -29,7 +29,7 @@ services:
       PORT: 3000  
       JWT_SECRET: jwtsecret  
       LOGGER_LEVEL: debug  
-      DB_HOST: localhost  
+      DB_HOST: 192.168.0.106    
       DB_PORT: 3307  
       DB_DATABASE: testDB  
       DB_ID: root  
